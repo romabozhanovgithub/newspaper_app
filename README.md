@@ -13,4 +13,4 @@ python manage.py runserver
 * Comment articles
 * Create, Review, Delete comments
 
-Sign up and sign in to create articles, create article to edit, review, delete and create comments
+Sign up and sign in to create articles, create article to edit, review, delete article and create comments
