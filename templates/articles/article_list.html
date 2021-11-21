@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+    {% for article in articles %}
+        <div class="card mt-5 mb-5">
+            <div class="card-header">
+                <a href="{% url 'article_details' article.pk %}"><span class="font-weight-bold">{{ article.title }}</span></a>
+                <span class="text-muted">by {{ article.author }} {{ article.date }}</span>
+            </div>
+            <div class="card-body">
+                {{ article.body }}
+                {% if user == article.author %}
+                <div>
+                    <a href="{% url 'article_edit' article.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'article_delete' article.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                {% for comment in article.comment_set.all %}
+                    <span class="d-inline-block font-weight-bold">
+                        {{ comment.author }}
+                    </span>
+                    <p>
+                        {{ comment.comment }}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

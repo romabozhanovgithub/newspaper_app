@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+    <h1>New Article</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" type="text" name="title">
+        </div>
+        <div class="form-group">
+            <label for="body">Text</label>
+            <textarea class="form-control" type="text" name="body"></textarea>
+        </div>
+        <button class="btn btn-info ml-2" type="submit">Create</button>
+    </form>
+{% endblock %}
